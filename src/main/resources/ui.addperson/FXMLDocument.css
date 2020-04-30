@@ -1,3 +1,21 @@
+.jfx-button{
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+}
+
+.jfx-button:hover{
+    -fx-background-color: #27ae60;
+}
+
+.jfx-button-cancel{
+    -fx-background-color: rgba(231, 76, 60, 0.85);
+}
+
+.jfx-button-cancel:hover{
+    -fx-background-color: #ff3828;
+}
+
+
 .jfx-text-field{
     -jfx-focus-color: #4eb769;
     /*-jfx-unfocus-color: #fffd8c; doesn't work*/
