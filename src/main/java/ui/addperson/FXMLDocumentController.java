@@ -7,10 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FXMLDocumentController implements Initializable {
     @FXML
@@ -25,12 +31,28 @@ public class FXMLDocumentController implements Initializable {
     public JFXButton save;
     @FXML
     public JFXButton cancel;
+    @FXML
+    public AnchorPane rootPane;
 
     DatabaseHandler databaseHandler;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         databaseHandler = new DatabaseHandler();
+        checkData();
+    }
+
+    private void checkData() {
+        String query = "SELECT firstName FROM PERSON ";
+        ResultSet resultSet = databaseHandler.execQuery(query);
+        try {
+            while (resultSet.next()) {
+                String fn = resultSet.getString("firstName");
+                System.out.println(fn);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null,e);
+        }
     }
 
     @FXML
@@ -41,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
         String personID = ID.getText();
 
         if (personID.isEmpty() || personFirstName.isEmpty() ||
-                personSecondName.isEmpty() || personMiddleName.isEmpty()){
+                personSecondName.isEmpty() || personMiddleName.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Enter in all fields");
@@ -55,7 +77,7 @@ public class FXMLDocumentController implements Initializable {
                 + "'" + personSecondName + "',"
                 + "'" + personMiddleName + "')";
         System.out.println(query);
-        if (databaseHandler.execAction(query)){
+        if (databaseHandler.execAction(query)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText("Success");
@@ -72,5 +94,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void cancel(ActionEvent actionEvent) {
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.close();
     }
 }
