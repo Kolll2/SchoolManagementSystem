@@ -26,4 +26,5 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.base', 'javafx.fxml', 'javafx.graphics']
 }
 
-mainClassName = 'Launch'
+//mainClassName = 'Launch'
+mainClassName = 'ui.listperson.PersonListLoader'
