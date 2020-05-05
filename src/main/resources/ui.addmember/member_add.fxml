@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.addmember.MemberAddController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="220.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.addmember.MemberAddController">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="220.0" prefWidth="400.0">
+         <children>
+            <JFXTextField fx:id="name" layoutX="10.0" layoutY="10.0" promptText="Name" stylesheets="@../ui.addperson/FXMLDocument.css">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="15.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="id" promptText="Member ID">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="mobile" layoutX="10.0" layoutY="10.0" promptText="Mobile">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="email" layoutX="10.0" layoutY="35.0" promptText="E-mail">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="save" onAction="#addMember" prefHeight="40.0" prefWidth="200.0" stylesheets="@../ui.addperson/FXMLDocument.css" text="Save" />
+                  <JFXButton fx:id="cancel" layoutX="10.0" layoutY="10.0" onAction="#cancel" prefHeight="40.0" prefWidth="125.0" styleClass="jfx-button-cancel" stylesheets="@../ui.addperson/FXMLDocument.css" text="Cancel">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

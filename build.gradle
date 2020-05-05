@@ -27,4 +27,5 @@ javafx {
 }
 
 //mainClassName = 'Launch'
-mainClassName = 'ui.listperson.PersonListLoader'
+//mainClassName = 'ui.listperson.PersonListLoader'
+mainClassName = 'ui.listmember.MemberListLoader'
